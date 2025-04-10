@@ -30,11 +30,11 @@ Accessible via a history modal for quick reference.
 
 5. Keyboard Shortcuts
 Streamline workflows with keyboard shortcuts:
-Ctrl+C : Copy password to clipboard.
-Ctrl+D : Download password as a text file.
-Ctrl+R : Reset the generator.
-Ctrl+H : Toggle password history.
-Ctrl+K : Show keyboard shortcuts.
+SHIFT+C : Copy password to clipboard.
+SHIFT+D : Download password as a text file.
+SHIFT+R : Reset the generator.
+SHIFT+H : Toggle password history.
+SHIFT+K : Show keyboard shortcuts.
 
 6. Mobile-Friendly Design
 Optimized for both desktop and mobile devices.
@@ -67,7 +67,8 @@ Navigate to the project directory: cd securepass
 
 Install dependencies: npm install
 
-Start the development server: npm start 
+Start the development server: npm start
+
 The application will be available at http://localhost:3000.
 
 Render the project for server deploy: npm run build
