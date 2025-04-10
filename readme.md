@@ -73,7 +73,7 @@ The application will be available at http://localhost:5173
 
 Render the project for server deploy: npm run build
 
-Technologies Used
+TECHNOLOGIES USED
 
 React : For building the user interface.
 
