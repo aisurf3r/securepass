@@ -1,4 +1,7 @@
-SecurePass - Secure Password Generator
+![{04027814-D10C-4C92-B7D4-7B0AD97ACF89}](https://github.com/user-attachments/assets/85d9529d-54cc-49e1-bcb3-600384ebf0e8)
+
+
+SECUREPASS - Secure Password Generator
 
 SecurePass is an advanced password generator that uses entropy collected from mouse movements (or touch interactions on mobile devices) to create secure and unique passwords. The application focuses on security, usability, and privacy, ensuring that your passwords are robust and tailored to your preferences.
 
