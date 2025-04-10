@@ -69,15 +69,20 @@ Install dependencies: npm install
 
 Start the development server: npm start
 
-The application will be available at http://localhost:3000.
+The application will be available at http://localhost:5173
 
 Render the project for server deploy: npm run build
 
 Technologies Used
+
 React : For building the user interface.
+
 TypeScript : For type safety and enhanced developer experience.
+
 Lucide React Icons : For clean and modern icons.
+
 CSS Flexbox/Grid : For responsive and visually appealing layouts.
+
 Web Crypto API : For generating cryptographically secure random values.
 
 Contributing & Support
