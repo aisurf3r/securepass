@@ -32,7 +32,7 @@ Your secure password will appear automatically!
 
 Copy or download with one click
 
-bash
+# Installation  
 # Installation  
 git clone https://github.com/aisurf3r/securepass.git  
 cd securepass  
