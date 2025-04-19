@@ -1,6 +1,7 @@
 ![{04027814-D10C-4C92-B7D4-7B0AD97ACF89}](https://github.com/user-attachments/assets/85d9529d-54cc-49e1-bcb3-600384ebf0e8)
 
 SecurePass 🔒✨
+
 Secure Password Generator
 SecurePass generates ultra-secure passwords using mouse movements or touch gestures for true randomness. Everything is processed locally in your browser—your data never leaves your device.
 
