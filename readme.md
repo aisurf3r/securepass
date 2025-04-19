@@ -33,11 +33,12 @@ Your secure password will appear automatically!
 Copy or download with one click
 
 # Installation  
-# Installation  
+
 git clone https://github.com/aisurf3r/securepass.git  
 cd securepass  
 npm install  
 npm start  
+
 Tech Stack: React · TypeScript · Web Crypto API
 
 🔐 100% local—Your passwords never leave your device
