@@ -189,8 +189,8 @@ function App() {
     const now = Date.now();
     if (now - lastUpdateRef.current < 50) return;
 
-    // Aceleramos la recolección en móviles
-    for (let i = 0; i < 5; i++) {
+    // Reducimos un poco la velocidad de recolección en móviles (de 5 a 3 puntos por movimiento)
+    for (let i = 0; i < 3; i++) {
       mousePointsRef.current.push(
         touch.clientX + Math.random() * 10 - 5,
         touch.clientY + Math.random() * 10 - 5,
@@ -198,7 +198,8 @@ function App() {
       );
     }
 
-    const newEntropy = Math.min(100, mousePointsRef.current.length / 4.5);
+    // Ajustamos también el factor de división para compensar (de 4.5 a 5)
+    const newEntropy = Math.min(100, mousePointsRef.current.length / 5);
     setEntropyCollected(newEntropy);
     lastUpdateRef.current = now;
 
@@ -378,21 +379,21 @@ function App() {
           </div>
 
           <div className="relative">
-            <div className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'} p-4 rounded-lg break-all font-mono text-lg min-h-[4rem] flex items-center overflow-x-auto`}>
+            <div className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'} p-4 rounded-lg break-all font-mono text-lg min-h-[4rem] flex items-center overflow-x-auto max-w-full`}>
               {password || 'Your password will appear here'}
             </div>
             {password && (
-              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-2">
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-2 z-10">
                 <button
                   onClick={copyToClipboard}
-                  className={`p-2 ${darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'} rounded-full transition-colors`}
+                  className={`p-2 ${darkMode ? 'hover:bg-gray-600 bg-gray-700' : 'hover:bg-gray-200 bg-gray-100'} rounded-full transition-colors`}
                   title="Copy to clipboard (Shift+C)"
                 >
                   {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />}
                 </button>
                 <button
                   onClick={downloadPassword}
-                  className={`p-2 ${darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'} rounded-full transition-colors`}
+                  className={`p-2 ${darkMode ? 'hover:bg-gray-600 bg-gray-700' : 'hover:bg-gray-200 bg-gray-100'} rounded-full transition-colors`}
                   title="Download password (Shift+D)"
                 >
                   <Download className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
@@ -599,7 +600,7 @@ function App() {
               </div>
               <div className="flex justify-between items-center">
                 <span className={darkMode ? 'text-gray-300' : 'text-gray-600'}>Show Shortcuts</span>
-                <kbd className={`px-2 py-1 ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded text-sm`}>Shift+K</kbd>
+                <kbd className={`px-2 py-1 ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded text-sm`}>Shift+D</kbd>
               </div>
             </div>
           </div>
