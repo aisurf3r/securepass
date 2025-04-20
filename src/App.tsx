@@ -199,7 +199,7 @@ function App() {
       );
     }
 
-    const newEntropy = Math.min(100, (mousePointsRef.current.length / 3) / 1.5); // Más rápido que con mouse
+    const newEntropy = Math.min(100, (mousePointsRef.current.length / 3) / 1.5)); // Más rápido que con mouse
     setEntropyCollected(newEntropy);
     lastUpdateRef.current = now;
 
