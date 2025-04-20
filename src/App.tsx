@@ -38,7 +38,6 @@ function App() {
   const generatorBoxRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef(options);
   const [isMobile, setIsMobile] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const strengthRef = useRef(strength);
 
   useEffect(() => {
@@ -129,7 +128,6 @@ function App() {
     setPassword(result);
     calculateStrength(result);
 
-    // Add to history immediately after generating
     if (result) {
       setPasswordHistory(prev => {
         const newHistory = [
@@ -172,7 +170,35 @@ function App() {
     if (now - lastUpdateRef.current < 50) return;
     
     mousePointsRef.current.push(e.clientX, e.clientY, now % 256);
-    const newEntropy = Math.min(100, (mousePointsRef.current.length / 3) / 2);
+    const newEntropy = Math.min(100, mousePointsRef.current.length / 6);
+    setEntropyCollected(newEntropy);
+    lastUpdateRef.current = now;
+
+    if (newEntropy < 100) {
+      generatePassword();
+    }
+  };
+
+  const collectTouchEntropy = (e: TouchEvent) => {
+    if (entropyCollected >= 100) return;
+    if (!isMobile) return;
+
+    const touch = e.touches[0];
+    if (!touch) return;
+
+    const now = Date.now();
+    if (now - lastUpdateRef.current < 50) return;
+
+    // Aceleramos la recolección en móviles
+    for (let i = 0; i < 5; i++) {
+      mousePointsRef.current.push(
+        touch.clientX + Math.random() * 10 - 5,
+        touch.clientY + Math.random() * 10 - 5,
+        (now % 256) + i
+      );
+    }
+
+    const newEntropy = Math.min(100, mousePointsRef.current.length / 4.5);
     setEntropyCollected(newEntropy);
     lastUpdateRef.current = now;
 
@@ -233,7 +259,11 @@ function App() {
 
   useEffect(() => {
     document.addEventListener('mousemove', collectMouseEntropy);
-    return () => document.removeEventListener('mousemove', collectMouseEntropy);
+    document.addEventListener('touchmove', collectTouchEntropy);
+    return () => {
+      document.removeEventListener('mousemove', collectMouseEntropy);
+      document.removeEventListener('touchmove', collectTouchEntropy);
+    };
   }, [isMobile]);
 
   useEffect(() => {
@@ -264,7 +294,6 @@ function App() {
   const hasNoFilters = !options.uppercase && !options.lowercase && 
                       !options.numbers && !options.symbols;
 
-  // Apply dark mode to body
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark');
