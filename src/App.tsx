@@ -378,28 +378,31 @@ function App() {
             />
           </div>
 
-          <div className="relative">
-            <div className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'} p-4 rounded-lg break-all font-mono text-lg min-h-[4rem] flex items-center overflow-x-auto max-w-full`}>
-              {password || 'Your password will appear here'}
-            </div>
+          <div className="space-y-2">
+            {/* Contenedor para los botones arriba */}
             {password && (
-              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-2 z-10">
+              <div className="flex justify-end gap-2 mb-2">
                 <button
                   onClick={copyToClipboard}
-                  className={`p-2 ${darkMode ? 'hover:bg-gray-600 bg-gray-700' : 'hover:bg-gray-200 bg-gray-100'} rounded-full transition-colors`}
+                  className={`p-2 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} rounded-full transition-colors`}
                   title="Copy to clipboard (Shift+C)"
                 >
                   {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />}
                 </button>
                 <button
                   onClick={downloadPassword}
-                  className={`p-2 ${darkMode ? 'hover:bg-gray-600 bg-gray-700' : 'hover:bg-gray-200 bg-gray-100'} rounded-full transition-colors`}
+                  className={`p-2 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} rounded-full transition-colors`}
                   title="Download password (Shift+D)"
                 >
                   <Download className={`w-5 h-5 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
                 </button>
               </div>
             )}
+            
+            {/* Campo de contraseña */}
+            <div className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'} p-4 rounded-lg break-all font-mono text-lg min-h-[4rem] flex items-center overflow-x-auto max-w-full`}>
+              {password || 'Your password will appear here'}
+            </div>
           </div>
 
           {password && (
@@ -501,7 +504,7 @@ function App() {
       </main>
 
       {showHistory && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-6 w-full max-w-md`}>
             <div className="flex justify-between items-center mb-4">
               <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Password History</h3>
@@ -532,7 +535,7 @@ function App() {
       )}
 
       {showStrengthInfo && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-6 w-full max-w-md`}>
             <div className="flex justify-between items-center mb-4">
               <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Password Strength Calculation</h3>
@@ -570,7 +573,7 @@ function App() {
       )}
 
       {showKeyboardShortcuts && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-xl p-6 w-full max-w-md`}>
             <div className="flex justify-between items-center mb-4">
               <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Keyboard Shortcuts</h3>
@@ -600,7 +603,7 @@ function App() {
               </div>
               <div className="flex justify-between items-center">
                 <span className={darkMode ? 'text-gray-300' : 'text-gray-600'}>Show Shortcuts</span>
-                <kbd className={`px-2 py-1 ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded text-sm`}>Shift+D</kbd>
+                <kbd className={`px-2 py-1 ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded text-sm`}>Shift+K</kbd>
               </div>
             </div>
           </div>
